@@ -3,6 +3,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 
+app.use(express.static("build"));
+
 app.use(cors());
 let persons = [
   { name: "saad", number: "0674504789", id: 0 },
@@ -82,8 +84,6 @@ app.post("/api/persons", (request, response) => {
 
   response.json(person);
 });
-
-app.use(express.static("build"));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
